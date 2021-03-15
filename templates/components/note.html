@@ -1,7 +1,11 @@
 <div class="card">
-	<button type="button" class="deletebtn">Delete</button>
-    <h3 class="card-title">{title}</h3>
+	<form name="delete-card-{id}" method="post">
+        <input type="hidden" name="deletar" value="{id}"/>
+        <button class="delete-button" type="submit">x</button>
+    </form>
+    <h3 class="card-title" name="title-{id}">{title}</h3>
     <div class="card-content">
-        <p>{details}</p>
+        <p name="content-{id}">{details}</p>
     </div>
+    <button class="edit-button" onclick="editButton({id})">Editar</button>
 </div>

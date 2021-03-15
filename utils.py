@@ -43,14 +43,19 @@ def save_params(request):
 	request = request.replace('\r', '') #remove caracteres indesejados
 	#cabeçalho e corpo estao sempre separados por duas quebras de linha
 	partes = request.split('\n\n')
-	corpo = unquote_plus(partes[1]) #resultado do submit titulo&detalhes
+	corpo = partes[1] #resultado do submit titulo&detalhes
 	params = {}
 	for chave_valor in corpo.split('&'):
-		chave_valores = chave_valor.split('=') #separav titulo e descricao de seus valores
-		if chave_valor.startswith('titulo'):
+		chave_valores = unquote_plus(chave_valor).split('=') #separav titulo e descricao de seus valores
+		if chave_valor.startswith('deletar'):
+			params['deletar']= chave_valores[1] #vai me retornar o id
+		elif chave_valor.startswith('id'):
+			params['id']=chave_valores[1]
+		elif chave_valor.startswith('titulo'):
 			params['titulo']=chave_valores[1]
 		elif chave_valor.startswith('detalhes'):
 			params['detalhes']=chave_valores[1]
+	print('params: ', params)
 	return params
 
 

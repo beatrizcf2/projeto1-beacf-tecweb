@@ -24,16 +24,19 @@
     <div class='note-input'>
       <form class="form-card" method="post">
         <div class='note-input-inside-container'>
+          <input type="hidden" value='None' name='id'> 
           <input class="form-card-title" id='titulo' type="text" name="titulo" placeholder="Título" />
-          <textarea class="autoresize" name="detalhes" placeholder="Digite o conteúdo..."></textarea>
-          <button class="btn" type="submit">Criar</button>
-
+          <textarea id="detalhes" class="autoresize" name="detalhes" type="text" placeholder="Digite o conteúdo..."></textarea>
+          <button class="btn" id="btn" type="submit">Criar</button>
         </div>
       </form>
     </div>
+
     <div class="card-container">
         {notes}
     </div>
+
+
   </main>
 
   <script type="text/javascript" src="templates/assets/js/getit.js"></script>

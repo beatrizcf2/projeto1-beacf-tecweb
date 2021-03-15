@@ -39,9 +39,14 @@ while True:
 	route = extract_route(request)
 
 	filepath = CUR_DIR/route
+
+	print("\n route: ", route)
+	print("filepath: ", filepath, "\n")
 	
+	# se GET /templates/assets/css/getit.css HTTP/1.1
 	if filepath.is_file():
 		response = build_response() + read_file(filepath)
+	# se GET / HTTP/1.1 ou POST / HTTP/1.1
 	elif route == '':
 		response = index(request)
 	else:
